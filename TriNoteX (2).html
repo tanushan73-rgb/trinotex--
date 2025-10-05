@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TriNoteX - Download Now</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Poppins', sans-serif;
+}
+
+body {
+background: linear-gradient(135deg, #0a0e1a, #1a2035);
+color: #f1f5f9;
+min-height: 100vh;
+overflow-x: hidden;
+}
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 2rem;
+}
+
+/* Particle background */
+#particles-js {
+position: fixed;
+width: 100%;
+height: 100%;
+z-index: -1;
+}
+
+/* Header styles */
+header {
+text-align: center;
+padding: 3rem 0;
+animation: fadeInDown 1.5s ease;
+}
+
+.logo {
+width: 150px;
+height: 150px;
+margin: 0 auto;
+background: linear-gradient(135deg, #22d3ee, #a78bfa, #34d399);
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 0 70px rgba(34, 211, 238, 0.6);
+animation: pulse 3s infinite, rotate 20s linear infinite;
+position: relative;
+overflow: hidden;
+}
+
+.logo::before {
+content: '';
+position: absolute;
+width: 200%;
+height: 200%;
+background: conic-gradient(transparent, rgba(34, 211, 238, 0.6), transparent 30%);
+animation: rotate 3s linear infinite;
+}
+
+.logo img {
+width: 80px;
+height: 80px;
+z-index: 1;
+background: #0a0e1a;
+border-radius: 50%;
+padding: 15px;
+}
+
+h1 {
+font-size: 5rem;
+margin: 1.5rem 0;
+background: linear-gradient(90deg, #22d3ee, #a78bfa, #34d399);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+animation: glow 2s infinite alternate, textShine 5s infinite;
+position: relative;
+display: inline-block;
+}
+
+h1::after {
+content: '';
+position: absolute;
+bottom: -10px;
+left: 0;
+width: 100%;
+height: 4px;
+background: linear-gradient(90deg, #22d3ee, #a78bfa, #34d399);
+border-radius: 10px;
+animation: scaleX 3s infinite alternate;
+}
+
+.tagline {
+font-size: 1.5rem;
+opacity: 0.9;
+margin-bottom: 3rem;
+max-width: 600px;
+margin-left: auto;
+margin-right: auto;
+animation: fadeIn 2s ease;
+}
+
+/* Development Note */
+.dev-note {
+background: rgba(255, 193, 7, 0.1);
+border: 1px solid rgba(255, 193, 7, 0.3);
+border-radius: 12px;
+padding: 1.5rem;
+margin: 3rem auto;
+max-width: 700px;
+text-align: center;
+backdrop-filter: blur(10px);
+animation: pulse 2s infinite;
+}
+
+.dev-note i {
+color: #ffc107;
+font-size: 2rem;
+margin-bottom: 1rem;
+display: block;
+}
+
+.dev-note h3 {
+color: #ffc107;
+margin-bottom: 0.5rem;
+font-size: 1.5rem;
+}
+
+.dev-note p {
+opacity: 0.9;
+line-height: 1.6;
+}
+
+/* Instructions Section */
+.instructions {
+background: rgba(34, 211, 238, 0.1);
+border: 1px solid rgba(34, 211, 238, 0.3);
+border-radius: 12px;
+padding: 1.5rem;
+margin: 2rem auto;
+max-width: 800px;
+text-align: left;
+backdrop-filter: blur(10px);
+}
+
+.instructions h3 {
+color: #22d3ee;
+margin-bottom: 1rem;
+text-align: center;
+}
+
+.instructions ol {
+padding-left: 1.5rem;
+margin-bottom: 1rem;
+}
+
+.instructions li {
+margin-bottom: 0.5rem;
+line-height: 1.6;
+}
+
+.instructions a {
+color: #a78bfa;
+text-decoration: none;
+transition: color 0.3s;
+}
+
+.instructions a:hover {
+color: #22d3ee;
+text-decoration: underline;
+}
+
+/* Download section */
+.download-section {
+text-align: center;
+margin: 5rem 0;
+animation: fadeInUp 1.5s ease;
+}
+
+.download-title {
+font-size: 3rem;
+margin-bottom: 3rem;
+position: relative;
+display: inline-block;
+}
+
+.download-title::after {
+content: '';
+position: absolute;
+bottom: -15px;
+left: 50%;
+transform: translateX(-50%); 
+width: 100px;
+height: 4px;
+background: linear-gradient(90deg, #22d3ee, #a78bfa);
+border-radius: 10px;
+}
+
+.platforms {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 2.5rem;
+margin-bottom: 4rem;
+}
+
+.platform-card {
+background: rgba(255, 255, 255, 0.05);
+border-radius: 20px;
+padding: 2.5rem 2rem;
+width: 320px;
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+transition: all 0.4s ease;
+animation: fadeIn 1s ease;
+position: relative;
+overflow: hidden;
+}
+
+.platform-card::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 5px;
+background: linear-gradient(90deg, #22d3ee, #a78bfa, #34d399);
+}
+
+.platform-card:hover {
+transform: translateY(-15px) scale(1.03);
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.platform-card.windows {
+animation-delay: 0.2s;
+}
+
+.platform-card.linux {
+animation-delay: 0.4s;
+}
+
+.platform-card.android {
+animation-delay: 0.6s;
+}
+
+.platform-icon {
+font-size: 4rem;
+margin-bottom: 1.5rem;
+}
+
+.platform-name {
+font-size: 1.8rem;
+margin-bottom: 1.5rem;
+}
+
+.platform-desc {
+margin-bottom: 1.5rem;
+min-height: 60px;
+}
+
+.download-btn {
+display: inline-block;
+background: linear-gradient(90deg, #22d3ee, #a78bfa);
+color: white;
+padding: 15px 40px;
+border-radius: 50px;
+text-decoration: none;
+font-weight: 600;
+font-size: 1.1rem;
+margin-top: 1rem;
+transition: all 0.3s ease;
+box-shadow: 0 5px 20px rgba(34, 211, 238, 0.4);
+position: relative;
+overflow: hidden;
+}
+
+.download-btn::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+transition: 0.5s;
+}
+
+.download-btn:hover::before {
+left: 100%;
+}
+
+.download-btn:hover {
+transform: scale(1.08);
+box-shadow: 0 8px 25px rgba(34, 211, 238, 0.6);
+}
+
+.coming-soon {
+background: linear-gradient(90deg, #64748b, #94a3b8);
+cursor: not-allowed;
+}
+
+.auto-detect {
+font-size: 1rem;
+margin-top: 1rem;
+color: #22d3ee;
+background: rgba(34, 211, 238, 0.1);
+padding: 8px 15px;
+border-radius: 20px;
+display: inline-block;
+}
+
+/* Footer */
+footer {
+text-align: center;
+margin-top: 6rem;
+padding: 3rem 0;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+animation: fadeIn 1.5s ease;
+position: relative;
+}
+
+footer::before {
+content: '';
+position: absolute;
+top: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 150px;
+height: 3px;
+background: linear-gradient(90deg, #22d3ee, #a78bfa);
+border-radius: 10px;
+}
+
+.team-name {
+font-size: 1.5rem;
+margin-bottom: 1.5rem;
+color: #a78bfa;
+font-weight: 600;
+}
+
+.copyright {
+opacity: 0.8;
+font-size: 1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+from { opacity: 0; }
+to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+from {
+opacity: 0;
+transform: translateY(-50px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes fadeInUp {
+from {
+opacity: 0;
+transform: translateY(50px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes pulse {
+0% { 
+transform: scale(1);
+box-shadow: 0 0 70px rgba(34, 211, 238, 0.6);
+}
+50% { 
+transform: scale(1.05);
+box-shadow: 0 0 90px rgba(34, 211, 238, 0.8);
+}
+100% { 
+transform: scale(1);
+box-shadow: 0 0 70px rgba(34, 211, 238, 0.6);
+}
+}
+
+@keyframes rotate {
+from { transform: rotate(0deg); }
+to { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+from { text-shadow: 0 0 10px rgba(34, 211, 238, 0.5); }
+to { text-shadow: 0 0 20px rgba(34, 211, 238, 0.8), 0 0 30px rgba(34, 211, 238, 0.6); }
+}
+
+@keyframes textShine {
+0% { background-position: 0% 50%; }
+50% { background-position: 100% 50%; }
+100% { background-position: 0% 50%; }
+}
+
+@keyframes scaleX {
+from { transform: scaleX(0.5); }
+to { transform: scaleX(1); }
+}
+
+@keyframes shine {
+0% { transform: translateX(-100%) rotate(45deg); }
+100% { transform: translateX(200%) rotate(45deg); }
+}
+
+/* Floating animation */
+.floating {
+animation: floating 4s ease-in-out infinite;
+}
+
+@keyframes floating {
+0% { transform: translateY(0px); }
+50% { transform: translateY(-15px); }
+100% { transform: translateY(0px); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+h1 {
+font-size: 3rem;
+}
+
+.tagline {
+font-size: 1.2rem;
+}
+
+.download-title {
+font-size: 2.2rem;
+}
+
+.platforms {
+flex-direction: column;
+align-items: center;
+}
+
+.platform-card {
+width: 100%;
+max-width: 350px;
+}
+
+.dev-note {
+margin: 2rem 1rem;
+padding: 1rem;
+}
+
+.instructions {
+margin: 2rem 1rem;
+padding: 1rem;
+}
+}
+
+/* ------------------ ADDED FOR AI BUTTON & CHAT (kept separate) ------------------ */
+#ai-button {
+position: fixed;
+bottom: 28px;
+right: 28px;
+background: linear-gradient(135deg,#22d3ee,#a78bfa,#34d399);
+color: #fff;
+padding: 18px 26px;
+border-radius: 999px;
+font-weight: 800;
+font-size: 1.05rem;
+cursor: pointer;
+box-shadow: 0 8px 40px rgba(34,211,238,0.28), 0 0 100px rgba(167,139,250,0.08);
+z-index: 2000;
+display: flex;
+align-items: center;
+gap: 10px;
+border: 0;
+outline: none;
+transform-origin: center;
+animation: aiFloat 3s ease-in-out infinite, aiPulse 2.6s infinite;
+}
+
+#ai-button .spark {
+width: 10px;
+height: 10px;
+background: rgba(255,255,255,0.85);
+border-radius: 50%;
+box-shadow: 0 0 12px rgba(255,255,255,0.9);
+transform: translateX(-6px);
+animation: sparkMove 2s linear infinite;
+}
+
+@keyframes aiFloat {
+0% { transform: translateY(0) rotate(0deg) scale(1); }
+25% { transform: translateY(-6px) rotate(-2deg) scale(1.02); }
+50% { transform: translateY(0) rotate(0deg) scale(1); }
+75% { transform: translateY(6px) rotate(2deg) scale(0.99); }
+100% { transform: translateY(0) rotate(0deg) scale(1); }
+}
+@keyframes aiPulse {
+0% { box-shadow: 0 6px 30px rgba(34,211,238,0.15); }
+50% { box-shadow: 0 18px 80px rgba(167,139,250,0.18); }
+100% { box-shadow: 0 6px 30px rgba(34,211,238,0.15); }
+}
+@keyframes sparkMove {
+0% { transform: translateX(-6px) translateY(0) scale(1); opacity: 1; }
+50% { transform: translateX(6px) translateY(-6px) scale(0.8); opacity: 0.6; }
+100% { transform: translateX(-6px) translateY(0) scale(1); opacity: 1; }
+}
+
+/* chat window */
+#ai-chat {
+position: fixed;
+bottom: 110px;
+right: 28px;
+width: 380px;
+max-width: calc(100% - 56px);
+height: 540px;
+background: linear-gradient(180deg, rgba(12,14,20,0.95), rgba(6,8,12,0.95));
+border-radius: 18px;
+box-shadow: 0 20px 80px rgba(3,6,23,0.6), 0 0 120px rgba(167,139,250,0.06);
+display: none;
+flex-direction: column;
+overflow: hidden;
+backdrop-filter: blur(8px) saturate(120%);
+z-index: 2100;
+}
+
+#ai-chat.show { display: flex; animation: chatEntrance 450ms cubic-bezier(.2,.8,.2,1); }
+
+@keyframes chatEntrance {
+from { transform: translateY(20px) scale(0.98); opacity: 0; }
+to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+#ai-chat header {
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+padding: 14px 16px;
+background: linear-gradient(90deg,#22d3ee,#a78bfa);
+color:#051124;
+font-weight:700;
+}
+
+#ai-chat .title {
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+#ai-chat .close {
+background: transparent;
+border: none;
+font-size: 1.1rem;
+cursor: pointer;
+padding:6px 8px;
+border-radius:8px;
+}
+
+#chat-messages {
+flex:1;
+padding: 12px;
+overflow-y: auto;
+font-size: 0.95rem;
+}
+
+.message {
+margin: 8px 0;
+padding: 10px 14px;
+border-radius: 12px;
+max-width: 86%;
+line-height: 1.4;
+word-break: break-word;
+}
+
+.user {background: #d1f7f7; color:#04232a; margin-left:auto;}
+.bot {background: rgba(255,255,255,0.04); color:#e6e6f7; margin-right:auto; border: 1px solid rgba(255,255,255,0.03);}
+
+#chat-input {
+display:flex;
+gap:8px;
+padding:10px;
+border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+#chat-input input {
+flex:1;
+padding:10px 12px;
+border-radius: 10px;
+border: 1px solid rgba(255,255,255,0.04);
+background: rgba(0,0,0,0.18);
+color: #fff;
+outline:none;
+}
+
+#chat-input button {
+background: linear-gradient(90deg,#34d399,#a78bfa);
+border: none;
+padding: 8px 14px;
+font-weight: 700;
+border-radius: 10px;
+cursor: pointer;
+}
+
+/* small helper */
+.ai-note { font-size: 12px; color: #a6b4c8; text-align:center; padding:6px 12px; }
+
+/* typing indicator */
+.typing {
+display:inline-block;
+width:36px;
+height:10px;
+position:relative;
+}
+.typing span {
+position:absolute;
+width:6px;height:6px;border-radius:50%;bottom:0; background:#cbd6ff; opacity:0.7; animation: typingdot 1s infinite ease-in-out;
+}
+.typing span:nth-child(1){left:0; animation-delay:0s;}
+.typing span:nth-child(2){left:10px; animation-delay:0.15s;}
+.typing span:nth-child(3){left:20px; animation-delay:0.3s;}
+@keyframes typingdot { 0%{transform:translateY(0);opacity:.2}50%{transform:translateY(-6px);opacity:1}100%{transform:translateY(0);opacity:.2} }
+
+</style>
+</head>
+<body>
+<!-- Particles Background -->
+<div id="particles-js"></div>
+
+<div class="container">
+<header>
+<div class="logo floating">
+<!-- YAHAN APNA LOGO DALNA - logo.png ya logo.jpg naam ki file -->
+<!-- Agar online host kiya hai toh: <img src="https://example.com/logo.png"> -->
+<img src="https://drive.google.com/uc?export=view&id=1YiO1BbVzWKwDCvgzq3DoYnZD2JLpgWF-" alt="TriNoteX Logo">
+</div>
+<h1>TriNoteX</h1>
+<p class="tagline">Revolutionizing the way students share and monetize their notes</p>
+</header>
+
+<!-- Development Note -->
+<div class="dev-note floating">
+<i class="fas fa-tools"></i>
+<h3>App in Development</h3>
+<p>We're currently working hard to bring you the best experience. The Windows version is available for testing, while Linux and Android versions are coming soon. Your feedback will help us improve!</p>
+</div>
+
+<!-- Instructions Section -->
+<div class="instructions">
+<h3><i class="fas fa-info-circle"></i> How to Download & Use</h3>
+<ol>
+<li>Click the <strong>Download for Windows</strong> button below</li>
+<li>If the download doesn't start automatically, <a href="#" id="directLink">click here for direct download</a></li>
+<li>Run the <code>TriNoteX Setup 1.0.0.exe</code> file after downloading</li>
+<li>Follow the installation instructions</li>
+<li>Launch TriNoteX and start using the app!</li>
+</ol>
+<p><strong>Note:</strong> The setup file works on both 32-bit and 64-bit Windows systems.</p>
+</div>
+
+<section class="download-section">
+<h2 class="download-title">Download Our App</h2>
+
+<div class="platforms">
+                <div class="platform-card windows floating">
+                    <div class="platform-icon">🪟</div>
+                    <h3 class="platform-name">Windows</h3>
+                    <p class="platform-desc">Full featured desktop application with advanced note management</p>
+                    <p class="auto-detect">Both x32 and x64 auto-detected</p>
+                    
+                    <!-- YAHAN APNA .EXE SETUP DALNA -->
+                    <!-- Agar online host kiya hai toh: <a href="https://example.com/TriNoteX_Setup.exe" class="download-btn"> -->
+                    <a href="https://drive.google.com/uc?export=download&id=1Qh6d5142QFnoOJZfhIAc4-AllWSP6w1M" class="download-btn" download>
+                        <i class="fas fa-download"></i> Download for Windows
+                    </a>
+                </div>
+                
+                <div class="platform-card linux floating" style="animation-delay: 0.2s;">
+                    <div class="platform-icon">🐧</div>
+                    <h3 class="platform-name">Linux</h3>
+                    <p class="platform-desc">Native Linux version with terminal integration</p>
+                    <a class="download-btn coming-soon">
+                        <i class="fas fa-clock"></i> Coming Soon
+                    </a>
+                </div>
+                
+                <div class="platform-card android floating" style="animation-delay: 0.4s;">
+                    <div class="platform-icon">🤖</div>
+                    <h3 class="platform-name">Android</h3>
+                    <p class="platform-desc">Mobile app with offline access and sync</p>
+                    <a class="download-btn coming-soon">
+                        <i class="fas fa-clock"></i> Coming Soon
+                    </a>
+                </div>
+
+                <!-- iOS / iPhone card (added) -->
+                <div class="platform-card floating" style="animation-delay: 0.5s;">
+                    <div class="platform-icon">📱</div>
+                    <h3 class="platform-name">iOS</h3>
+                    <p class="platform-desc">iPhone / iPad version — optimized mobile experience</p>
+                    <a class="download-btn coming-soon">
+                        <i class="fas fa-clock"></i> Coming Soon
+                    </a>
+                </div>
+            </div>
+</section>
+
+<footer>
+<p class="team-name">TriNoteX Team</p>
+<p class="copyright">© 2025 TriNoteX. All rights reserved. Made with ❤️ for students</p>
+</footer>
+</div>
+
+<!-- AI Button -->
+<button id="ai-button" title="Chat with TriNoteX AI">
+  <span class="spark"></span>
+  <span>Chat TriNoteX AI</span>
+</button>
+
+<!-- AI Chat Window -->
+<div id="ai-chat" aria-hidden="true" role="dialog" aria-label="TriNoteX AI chat">
+  <header>
+    <div class="title"><i class="fa-solid fa-robot"></i>&nbsp;TriNoteX AI</div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div class="ai-note" style="font-size:12px;padding-right:8px;">Start in English · Formal</div>
+      <button class="close" id="ai-close" aria-label="Close chat">✕</button>
+    </div>
+  </header>
+  <div id="chat-messages">
+    <!-- Changed initial bot message to a neutral greeting (no API-key text shown to users) -->
+    <div class="message bot">Hello — I am TriNoteX AI</div>
+  </div>
+  <div id="chat-input">
+    <input id="user-input" placeholder="I AM HERE FOR YOU" autocomplete="off" />
+    <button id="send-btn">Send</button>
+  </div>
+</div>
+
+<!-- Particles.js for background animation -->
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+/* -------------------- Your existing particles config (kept intact) -------------------- */
+particlesJS('particles-js', {
+particles: {
+number: { value: 100, density: { enable: true, value_area: 1000 } },
+color: { value: "#22d3ee" },
+shape: { 
+type: "circle",
+stroke: { width: 0, color: "#000000" }
+},
+opacity: { 
+value: 0.7, 
+random: true,
+anim: { enable: true, speed: 1, opacity_min: 0.3, sync: false }
+},
+size: { 
+value: 4, 
+random: true,
+anim: { enable: true, speed: 3, size_min: 0.5, sync: false }
+},
+line_linked: {
+enable: true,
+distance: 150,
+color: "#a78bfa",
+opacity: 0.4,
+width: 1.5
+},
+move: {
+enable: true,
+speed: 3,
+direction: "none",
+random: true,
+straight: false,
+out_mode: "out",
+bounce: false,
+attract: { enable: true, rotateX: 600, rotateY: 1200 }
+}
+},
+interactivity: {
+detect_on: "canvas",
+events: {
+onhover: { enable: true, mode: "grab" },
+onclick: { enable: true, mode: "push" },
+resize: true
+},
+modes: {
+grab: { distance: 140, line_linked: { opacity: 1 } },
+push: { particles_nb: 4 }
+}
+},
+retina_detect: true
+});
+/* ------------------------------------------------------------------------------------ */
+
+/* make direct link clickable (keeps your existing behavior) */
+try {
+  const dl = document.querySelector('.download-btn');
+  const direct = document.getElementById('directLink');
+  if (dl && direct) direct.href = dl.href;
+} catch(e){}
+
+/* -------------------- AI CHAT LOGIC (Google Generative API) -------------------- */
+
+/*
+  IMPORTANT NOTES (read before using):
+  1) Paste your Google API key into the variable GOOGLE_API_KEY below.
+     - Edit the script and replace 'PASTE_YOUR_GOOGLE_API_KEY_HERE' with your key.
+  2) Exposing the API key in client-side JS is NOT secure for production.
+     - For production, put a small server-side proxy that holds the key and forwards requests.
+  3) This code calls the Google Generative API model text-bison-001:
+     POST https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generate?key=YOUR_KEY
+*/
+
+const GOOGLE_API_KEY = "PASTE_YOUR_GOOGLE_API_KEY_HERE"; // <-- PASTE YOUR GOOGLE API KEY HERE
+
+// DOM refs
+const aiBtn = document.getElementById('ai-button');
+const aiChat = document.getElementById('ai-chat');
+const aiClose = document.getElementById('ai-close');
+const sendBtn = document.getElementById('send-btn');
+const userInput = document.getElementById('user-input');
+const chatMessages = document.getElementById('chat-messages');
+
+function openChat(){
+  aiChat.classList.add('show');
+  aiChat.setAttribute('aria-hidden','false');
+  setTimeout(()=> userInput.focus(), 150);
+}
+function closeChat(){
+  aiChat.classList.remove('show');
+  aiChat.setAttribute('aria-hidden','true');
+}
+
+aiBtn.addEventListener('click', () => {
+  if (aiChat.classList.contains('show')) closeChat();
+  else openChat();
+});
+aiClose.addEventListener('click', closeChat);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeChat(); });
+
+function appendMessage(text, cls){
+  const d = document.createElement('div');
+  d.className = 'message ' + cls;
+  d.innerHTML = text;
+  chatMessages.appendChild(d);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+  return d;
+}
+
+function setTypingIndicator(node){
+  node.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+}
+
+/* Build the system prompt using the facts you gave */
+function buildSystemPrompt(){
+  return `You are TriNoteX AI. Use a formal tone. Start replies in English unless the user explicitly requests a different language.
+You must primarily answer about TriNoteX (the app & website). Known facts:
+1) Founders / roles: SHANTANU => Founder / CTO / CEO. SHRIANSH => CFO / Co-founder. ABDUL => COO / Co-founder.
+2) App is in development.
+3) Available now: Windows (installer). Coming soon: Linux, Android, macOS, iOS.
+4) Website/training link: https://trinotex.vercel.app (downloads & info).
+5) Company started in 2025; mission: provide notes to people who cannot access them.
+6) Contact: trinotex999@gmail.com
+Only answer general questions briefly if asked outside TriNoteX context. If user asks for anything requiring private credentials or account changes, instruct them to contact the team at trinotex999@gmail.com. Keep replies concise and formal.`;
+}
+
+/* Helper: call Google Generative API text-bison */
+async function askGoogleBison(userText){
+  if (!GOOGLE_API_KEY || GOOGLE_API_KEY === "AIzaSyBWQAxOrqC3MjWzebuloS0UvBl_TCvh8UM") {
+    return { error: 'NO_KEY', message: 'API key not set. Paste your Google API key into the GOOGLE_API_KEY variable inside the page script.' };
+  }
+
+  const systemPrompt = buildSystemPrompt();
+  // Combine system and user prompts into one text prompt for text-bison
+  const promptText = systemPrompt + "\n\nUser: " + userText + "\n\nAssistant:";
+
+  const url = `https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generate?key=${encodeURIComponent(GOOGLE_API_KEY)}`;
+
+  try {
+    const resp = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        prompt: { text: promptText },
+        temperature: 0.2,
+        maxOutputTokens: 700
+      })
+    });
+
+    if (!resp.ok) {
+      const txt = await resp.text();
+      return { error: 'API_ERR', status: resp.status, message: txt };
+    }
+
+    const data = await resp.json();
+    // Google returns candidates[0].output (or candidates[0].output might be "content")
+    const candidate = data.candidates && data.candidates[0];
+    const content = candidate?.output || candidate?.content || data?.candidates?.[0]?.content?.[0]?.text || "";
+    // fallback
+    return { content: String(content).trim() || "" };
+  } catch (err) {
+    return { error: 'NETWORK', message: err.message || String(err) };
+  }
+}
+
+async function sendMessage(){
+  const text = userInput.value.trim();
+  if (!text) return;
+  appendMessage(escapeHtml(text), 'user');
+  userInput.value = '';
+  const botNode = appendMessage('', 'bot');
+  setTypingIndicator(botNode);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  const result = await askGoogleBison(text);
+  if (result.error) {
+    if (result.error === 'NO_KEY') {
+      botNode.innerHTML = `<strong style="color:#ffcf6d;">${escapeHtml(result.message)}</strong>`;
+    } else {
+      botNode.innerHTML = `<strong style="color:#ff6b6b;">Error: ${escapeHtml(result.message || 'Unknown error')}</strong>`;
+    }
+  } else {
+    botNode.innerHTML = mdToHtml(escapeHtml(result.content || 'Sorry, I could not generate a reply.'));
+  }
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// small helpers
+function escapeHtml(s){ return String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+// minimal markdown -> html
+function mdToHtml(text){
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>');
+}
+
+// events
+sendBtn.addEventListener('click', sendMessage);
+userInput.addEventListener('keydown', (e)=>{ if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } });
+
+// On open: focus input
+aiBtn.addEventListener('click', ()=> {
+  setTimeout(()=> { userInput.focus(); }, 200);
+});
+</script>
+</body>
+</html>
